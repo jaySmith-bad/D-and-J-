@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #1A1A1A;
+  --foreground: #FFFFFF;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-white selection:bg-primary/30;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: 9999;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary text-background px-8 py-3 rounded-none font-sans font-bold tracking-luxury uppercase hover:bg-primary-light transition-all duration-500 relative overflow-hidden;
+  }
+  
+  .btn-outline {
+    @apply border border-primary text-primary px-8 py-3 rounded-none font-sans font-bold tracking-luxury uppercase hover:bg-primary hover:text-background transition-all duration-500;
+  }
+
+  .editorial-heading {
+    @apply font-serif leading-[1.1] tracking-tight;
+  }
+
+  .parallax-image {
+    @apply will-change-transform;
+  }
+}
+
+/* Custom Selection */
+::selection {
+  @apply bg-primary text-background;
+}
+
+/* Smooth Scroll */
+html {
+  scroll-behavior: smooth;
+}
